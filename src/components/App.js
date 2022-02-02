@@ -12,6 +12,7 @@ function App() {
 	const [savedTask,setSavedTask]= useState()
 	const [saved,setSaved]= useState()
 
+	
 	const taskHandler = (e) => {
 		setTask(e.target.value)
 
@@ -47,22 +48,36 @@ function App() {
 		
 
 	}
+
+	const deleteHandler = (index)=>{
+	
+   let deletedTaskList = [...taskList]
+	deletedTaskList.splice(index, 1)
+	setTaskList(deletedTaskList)
+	console.log(taskList)
+
+	
+
+
+	}
 	return (
 		<div id="main">
 			<div><textarea value={task} id="task" onChange={(e) => taskHandler(e) } placeholder="enter task here">
 			</textarea>
 						
 			</div>
-			<button id="btn" onClick={AddTaskHandler}>Add Task</button>
+			<button id="btn" onClick={AddTaskHandler}  disabled={task==="" ?true:false} >Add Task</button>
 
 
 			<div id="task-list">
 				<ol>
-					{taskList.map((tasks, index) => {
-						return 						<li key={index} className="list">{tasks}
+					{taskList.map((tasks,index) => {
+						console.log(tasks.toString())
+						
+						return 	<li key={tasks.toString()} className="list">{tasks}
 
 							{!edit &&  <button className="edit" onClick={()=>editHandler(index)}>Edit </button>}
-							{!edit &&   <button className="delete">Delete</button>}
+							{!edit &&   <button className="delete" onClick={()=>deleteHandler(index)}>Delete</button>}
 						{ edit  && index==editIndex ? <>
 								<textarea value={savedTask} key={index} className="editTask" onChange={(e) => savedTaskHandler(e) } > </textarea> 
 								
