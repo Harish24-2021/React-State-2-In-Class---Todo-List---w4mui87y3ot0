@@ -81,11 +81,7 @@ function App() {
 						{ edit  && index==editIndex ? <>
 								<textarea value={savedTask} key={index} className="editTask" onChange={(e) => savedTaskHandler(e) } > </textarea> 
 								
-								<button className="saveTask" onClick={saveTaskHandler}  disabled={savedTask===""?true:false}  >Save</button>
-								<button>Testing</button>
-								<input value="8118"></input>
-
-								</>:null
+								<button className="saveTask" onClick={saveTaskHandler}  disabled={savedTask===""?true:false}  >Save</button></>:null
 								} 
 							
 					</li>
