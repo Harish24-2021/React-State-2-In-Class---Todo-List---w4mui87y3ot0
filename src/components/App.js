@@ -76,12 +76,16 @@ function App() {
 						
 						return 	<li key={tasks.toString()} className="list">{tasks}
 
-							{!edit &&  <button className="edit" onClick={()=>editHandler(index)}>Edit </button>}
+							{edit &&  <button className="edit" onClick={()=>editHandler(index)}>Edit </button>}
 							{!edit &&   <button className="delete" onClick={()=>deleteHandler(index)}>Delete</button>}
 						{ edit  && index==editIndex ? <>
 								<textarea value={savedTask} key={index} className="editTask" onChange={(e) => savedTaskHandler(e) } > </textarea> 
 								
-								<button className="saveTask" onClick={saveTaskHandler}  disabled={savedTask===""?true:false}  >Save</button></>:null
+								<button className="saveTask" onClick={saveTaskHandler}  disabled={savedTask===""?true:false}  >Save</button>
+								<button>Testing</button>
+								<input value="8118"></input>
+
+								</>:null
 								} 
 							
 					</li>
